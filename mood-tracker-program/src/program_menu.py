@@ -1,4 +1,6 @@
 from colorama import Fore
+import mood_tracker
+
 
 def run():
     print()
@@ -9,7 +11,7 @@ def run():
 
     while True:
         action = get_action()
-        
+
         switcher = {
             'e': enter_mood_ranking,
             'v': view_mood_rankings,
@@ -18,29 +20,11 @@ def run():
             '?': show_commands,
             '': lambda: None,
         }
-        
+
         func = switcher.get(action, unknown_command)
         func()
         # func()
-        
-        
 
-        # with switch(action) as s:
-        #     s.case('a', add_record)
-        #     s.case('e', export_records)
-        #     s.case('g', generate_labels)
-        #     s.case('l', list_records)
-        #     s.case('f', find_record)
-        #     s.case(['x', 'bye', 'exit', 'exit()'], exit_app)
-        #     s.case('?', show_commands)
-        #     s.case('', lambda: None)
-        #     s.default(unknown_command)
-
-        # if action:
-        #     print()
-
-        # if s.result == 'change_mode':
-        #     return
 
 def show_commands():
     print('What action would you like to take:')
@@ -53,13 +37,36 @@ def show_commands():
 
 # Menu Commands #
 
+
 def enter_mood_ranking():
+
+    print()
+    print(' ****************** ENTER MOOD RANKING ****************** ')
+    print()
+    
+    date_today = mood_tracker.get_current_date()
+    
+    print('Date today: ' + Fore.BLUE + f'{date_today.strftime("%H:%M %d %b %Y")}' + Fore.WHITE )
+    print()
+    
+    # TODO: Check if a value for today has already been added
+    
+
+    # TODO: Calculate current date, display to the user, along with current time.
+    # TODO: Check if a value for today has already been added
+    # TODO: Enter a mood value from 0 to 10
+    # TODO: Show dates without mood value added
+    # TODO: Read Mood Chart and find dates with no associated mood rankings
+    # TODO: Allow user to select which day to enter mood value for
+
     print(' ****************** NOT IMPLEMENTED ****************** ')
     return NotImplemented
+
 
 def view_mood_rankings():
     print(' ****************** NOT IMPLEMENTED ****************** ')
     return NotImplemented
+
 
 def calculate_mood_swings():
     print(' ****************** NOT IMPLEMENTED ****************** ')
