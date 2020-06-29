@@ -1,6 +1,7 @@
 from colorama import Fore
 import program_menu
 
+
 def main():
     print_header()
 

@@ -1,6 +1,6 @@
 from colorama import Fore
 import mood_tracker
-
+import services.csv_service as csv_service
 
 def run():
     print()
@@ -13,7 +13,8 @@ def run():
         action = get_action()
 
         switcher = {
-            'e': enter_mood_ranking,
+            'e': todays_mood_ranking,
+            'n': previous_mood_ranking,
             'v': view_mood_rankings,
             'c': calculate_mood_swings,
             'x': exit_app,
@@ -29,6 +30,7 @@ def run():
 def show_commands():
     print('What action would you like to take:')
     print('[E]nter mood ranking for today')
+    print('E[n]ter mood ranking for previous day')
     print('[V]iew previous mood rankings')
     print('[C]alculate current & upcoming mood swing')
     print('e[X]it app')
@@ -38,19 +40,23 @@ def show_commands():
 # Menu Commands #
 
 
-def enter_mood_ranking():
+def todays_mood_ranking():
 
     print()
-    print(' ****************** ENTER MOOD RANKING ****************** ')
+    print(' ****************** ENTER TODAYS MOOD RANKING ****************** ')
     print()
-    
+
     date_today = mood_tracker.get_current_date()
-    
-    print('Date today: ' + Fore.BLUE + f'{date_today.strftime("%H:%M %d %b %Y")}' + Fore.WHITE )
+
+    print('Date today: ' + Fore.BLUE +
+          f'{date_today.strftime("%H:%M %d %b %Y")}' + Fore.WHITE)
     print()
-    
+
+    print('')
+
+    todays_mood_value = csv_service.test()
+
     # TODO: Check if a value for today has already been added
-    
 
     # TODO: Calculate current date, display to the user, along with current time.
     # TODO: Check if a value for today has already been added
@@ -59,6 +65,11 @@ def enter_mood_ranking():
     # TODO: Read Mood Chart and find dates with no associated mood rankings
     # TODO: Allow user to select which day to enter mood value for
 
+    print(' ****************** NOT IMPLEMENTED ****************** ')
+    return NotImplemented
+
+
+def previous_mood_ranking():
     print(' ****************** NOT IMPLEMENTED ****************** ')
     return NotImplemented
 
